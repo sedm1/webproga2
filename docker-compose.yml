@@ -7,3 +7,9 @@ services:
     restart: always
     expose:
       - "3000"
+    networks:
+      - aiphra-net
+
+networks:
+  aiphra-net:
+    external: true
