@@ -16,7 +16,8 @@ app.get('/1', (req, res) => {
 
 // 2 задание первой лабы
 app.get('/login/', (req, res) => {
-    res.set('Content-Type', 'text/plain; charset=UTF-8')
+    res.set('Content-Type', 'text/plain; charset=UTF-8');
+    res.send('sedm1');
 })
 function task(x) {
     return x * (this * this);
