@@ -25,11 +25,14 @@ function task(x) {
 app.get('/sample/', (req, res) => {
     res.set('Content-Type', 'text/plain; charset=UTF-8');
 
-    const x = +req.query.x || 0;
-    const result = task.call(Number(x), Number(x));
-    res.send(result.toString());
-});
+    const functionCode = `
+        function task(x) {
+            return x * (this * this);
+        }
+    `;
 
+    res.send(functionCode);
+});
 
 app.listen(PORT, () => {
     console.log(`Запуск на порту ${PORT}`);
