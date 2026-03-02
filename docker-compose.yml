@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  webproga:
+    build: .
+    container_name: webproga_app
+    restart: always
+    expose:
+      - "3000"
