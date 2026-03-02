@@ -23,6 +23,8 @@ function task(x) {
     return x * (this * this);
 }
 app.get('/sample/', (req, res) => {
+    res.set('Content-Type', 'text/plain; charset=UTF-8');
+    
     const x = +req.query.x || 0;
     const result = task.call(Number(x), Number(x));
     res.send(result);
