@@ -1,4 +1,7 @@
 module.exports = function registerLab2Endpoints(app) {
+    const express = require('express');
+    app.use(express.text({ type: '*/*' }));
+
     app.use((req, res, next) => {
         res.set('Access-Control-Allow-Origin', '*');
         res.set('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
