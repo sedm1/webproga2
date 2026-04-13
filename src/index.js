@@ -1,13 +1,10 @@
-const express = require('express');
-const registerLab1Endpoints = require('./1');
-const registerLab2Endpoints = require('./2');
+import express from 'express';
+import bodyParser from 'body-parser';
+import {createReadStream} from 'node:fs';
+import crypto from 'node:crypto';
+import http from 'node:http';
+import {appSrc} from './app.js';
 
-const app = express();
-const PORT = 3000;
+const app = appSrc(express, bodyParser, createReadStream, crypto, http);
 
-// registerLab1Endpoints(app);
-registerLab2Endpoints(app);
-
-app.listen(PORT, () => {
-    console.log(`Запуск на порту ${PORT}`);
-});
+app.listen(3000);
