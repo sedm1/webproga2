@@ -1,10 +1,15 @@
 import express from 'express';
-import bodyParser from 'body-parser';
-import {createReadStream} from 'node:fs';
-import crypto from 'node:crypto';
-import http from 'node:http';
-import {appSrc} from './app.js';
 
-const app = appSrc(express, bodyParser, createReadStream, crypto, http);
+const app = express();
+
+app.get('/login', (req, res) => {
+    res.type('text/plain').send('sedm1');
+});
+
+app.get('/id/:id', async (req, res) => {
+    const response = await fetch(`https://nd.kodaktor.ru/users/${encodeURIComponent(req.params.id)}`);
+    const payload = await response.json();
+    res.type('text/plain').send(payload?.login);
+});
 
 app.listen(3000);
